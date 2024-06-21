@@ -1,0 +1,12 @@
+.gitignore
+.openapi-generator-ignore
+git_push.sh
+project.clj
+src/payment_service/api/payment.clj
+src/payment_service/core.clj
+src/payment_service/specs/_payments_get_200_response.clj
+src/payment_service/specs/_payments_get_200_response_1.clj
+src/payment_service/specs/_payments_get_200_response_1_payments_inner.clj
+src/payment_service/specs/_payments_get_200_response_payments_inner.clj
+src/payment_service/specs/_payments_post_201_response.clj
+src/payment_service/specs/_payments_post_request.clj

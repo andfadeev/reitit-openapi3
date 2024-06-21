@@ -1,0 +1,616 @@
+{
+  "openapi": "3.1.0",
+  "x-id": [
+    "reitit.openapi/default"
+  ],
+  "info": {
+    "title": "payment-service",
+    "description": "payment-service api",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/payments/": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": true,
+            "schema": {
+              "title": "Limit",
+              "description": "Max n of payments to return in the response",
+              "type": "integer",
+              "default": 10
+            },
+            "description": "Max n of payments to return in the response"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "amount": {
+                            "type": "integer"
+                          },
+                          "currency": {
+                            "type": "string",
+                            "enum": [
+                              "USD",
+                              "GBP",
+                              "EUR"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "amount",
+                          "currency"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "payments"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "application/transit+msgpack": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "amount": {
+                            "type": "integer"
+                          },
+                          "currency": {
+                            "type": "string",
+                            "enum": [
+                              "USD",
+                              "GBP",
+                              "EUR"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "amount",
+                          "currency"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "payments"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "application/transit+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "amount": {
+                            "type": "integer"
+                          },
+                          "currency": {
+                            "type": "string",
+                            "enum": [
+                              "USD",
+                              "GBP",
+                              "EUR"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "amount",
+                          "currency"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "payments"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "application/edn": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "amount": {
+                            "type": "integer"
+                          },
+                          "currency": {
+                            "type": "string",
+                            "enum": [
+                              "USD",
+                              "GBP",
+                              "EUR"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "amount",
+                          "currency"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "payments"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "payment"
+        ],
+        "summary": "Get list of payments"
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "enum": [
+                      "USD",
+                      "GBP",
+                      "EUR"
+                    ]
+                  }
+                },
+                "required": [
+                  "amount",
+                  "currency"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "application/transit+msgpack": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "enum": [
+                      "USD",
+                      "GBP",
+                      "EUR"
+                    ]
+                  }
+                },
+                "required": [
+                  "amount",
+                  "currency"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "application/transit+json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "enum": [
+                      "USD",
+                      "GBP",
+                      "EUR"
+                    ]
+                  }
+                },
+                "required": [
+                  "amount",
+                  "currency"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "application/edn": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "integer"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "enum": [
+                      "USD",
+                      "GBP",
+                      "EUR"
+                    ]
+                  }
+                },
+                "required": [
+                  "amount",
+                  "currency"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "USD",
+                            "GBP",
+                            "EUR"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "amount",
+                        "currency"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payment"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "application/transit+msgpack": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "USD",
+                            "GBP",
+                            "EUR"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "amount",
+                        "currency"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payment"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "application/transit+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "USD",
+                            "GBP",
+                            "EUR"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "amount",
+                        "currency"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payment"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "application/edn": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "USD",
+                            "GBP",
+                            "EUR"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "amount",
+                        "currency"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payment"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "payment"
+        ]
+      }
+    },
+    "/payments/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "USD",
+                            "GBP",
+                            "EUR"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "amount",
+                        "currency"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payment"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "application/transit+msgpack": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "USD",
+                            "GBP",
+                            "EUR"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "amount",
+                        "currency"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payment"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "application/transit+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "USD",
+                            "GBP",
+                            "EUR"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "amount",
+                        "currency"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payment"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "application/edn": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "USD",
+                            "GBP",
+                            "EUR"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "amount",
+                        "currency"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payment"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "payment"
+        ],
+        "summary": "Get payment by id"
+      }
+    }
+  }
+}

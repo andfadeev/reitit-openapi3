@@ -1,0 +1,207 @@
+openapi: 3.1.0
+info:
+  description: payment-service api
+  title: payment-service
+  version: 0.0.1
+servers:
+- url: /
+paths:
+  /payments/:
+    get:
+      parameters:
+      - description: Max n of payments to return in the response
+        explode: true
+        in: query
+        name: limit
+        required: true
+        schema:
+          default: 10
+          description: Max n of payments to return in the response
+          title: Limit
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_payments__get_200_response'
+            application/transit+msgpack:
+              schema:
+                $ref: '#/components/schemas/_payments__get_200_response_1'
+            application/transit+json:
+              schema:
+                $ref: '#/components/schemas/_payments__get_200_response_1'
+            application/edn:
+              schema:
+                $ref: '#/components/schemas/_payments__get_200_response_1'
+      summary: Get list of payments
+      tags:
+      - payment
+      x-accepts:
+      - application/edn
+      - application/json
+      - application/transit+json
+      - application/transit+msgpack
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_payments__post_request'
+          application/transit+msgpack:
+            schema:
+              $ref: '#/components/schemas/_payments__post_request'
+          application/transit+json:
+            schema:
+              $ref: '#/components/schemas/_payments__post_request'
+          application/edn:
+            schema:
+              $ref: '#/components/schemas/_payments__post_request'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_payments__post_201_response'
+            application/transit+msgpack:
+              schema:
+                $ref: '#/components/schemas/_payments__post_201_response'
+            application/transit+json:
+              schema:
+                $ref: '#/components/schemas/_payments__post_201_response'
+            application/edn:
+              schema:
+                $ref: '#/components/schemas/_payments__post_201_response'
+      tags:
+      - payment
+      x-content-type: application/json
+      x-accepts:
+      - application/edn
+      - application/json
+      - application/transit+json
+      - application/transit+msgpack
+  /payments/{id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_payments__post_201_response'
+            application/transit+msgpack:
+              schema:
+                $ref: '#/components/schemas/_payments__post_201_response'
+            application/transit+json:
+              schema:
+                $ref: '#/components/schemas/_payments__post_201_response'
+            application/edn:
+              schema:
+                $ref: '#/components/schemas/_payments__post_201_response'
+      summary: Get payment by id
+      tags:
+      - payment
+      x-accepts:
+      - application/edn
+      - application/json
+      - application/transit+json
+      - application/transit+msgpack
+components:
+  schemas:
+    _payments__get_200_response_1_payments_inner:
+      additionalProperties: false
+      example:
+        amount: 6
+        currency: USD
+        id: 0
+      properties:
+        id: {}
+        amount: {}
+        currency:
+          enum:
+          - USD
+          - GBP
+          - EUR
+      required:
+      - amount
+      - currency
+      - id
+    _payments__post_201_response:
+      additionalProperties: {}
+      example:
+        payment:
+          amount: 6
+          currency: USD
+          id: 0
+      properties:
+        payment:
+          $ref: '#/components/schemas/_payments__get_200_response_1_payments_inner'
+      required:
+      - payment
+    _payments__post_request:
+      additionalProperties: {}
+      properties:
+        amount:
+          type: integer
+        currency:
+          enum:
+          - USD
+          - GBP
+          - EUR
+      required:
+      - amount
+      - currency
+    _payments__get_200_response_1:
+      additionalProperties: {}
+      properties:
+        payments:
+          items:
+            $ref: '#/components/schemas/_payments__get_200_response_1_payments_inner'
+      required:
+      - payments
+    _payments__get_200_response_payments_inner:
+      additionalProperties: {}
+      example:
+        amount: 6
+        currency: USD
+        id: 0
+      properties:
+        id: {}
+        amount:
+          type: integer
+        currency:
+          enum:
+          - USD
+          - GBP
+          - EUR
+      required:
+      - amount
+      - currency
+      - id
+    _payments__get_200_response:
+      additionalProperties: {}
+      example:
+        payments:
+        - amount: 6
+          currency: USD
+          id: 0
+        - amount: 6
+          currency: USD
+          id: 0
+      properties:
+        payments:
+          items:
+            $ref: '#/components/schemas/_payments__get_200_response_payments_inner'
+      required:
+      - payments
+x-id:
+- reitit.openapi/default
+
